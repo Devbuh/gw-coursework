@@ -4,39 +4,30 @@
 //
 //  Created by (s) Devraj Dhaliwal on 11/03/2024.
 //
-
 import Foundation
+//simple bare bones sim -> additive sim
 
-let SIZE = 200
-let LOSS = 0.2
-let LOSS_LAYER = 180
+let c = 299792458.0
+let dx = 0.01
+let dt = dx / c
+let numSteps = 1000
+let numcells = 200
+let sourceP = 50
+let sourceValue = 1.0
+var t = 0
 
-func main (){
-    let ez : Double = Double(SIZE)
-    let hy = SIZE - 1
-    let ceze = SIZE
-    let cezh = SIZE
-    let chyh = SIZE - 1
-    let imp0 = 377.0
-    let qtime : Int
-    let maxTime = 450
-    let mm : Double
-    
-    //electric field
-    
-    //magnetic field
-    
-    //electric field coefficients
-    
-    //mgnetic field coefficicents
-    
-    //dt timestep
+var ez = [Double](repeating: 0.0, count:numcells)
+var hy = [Double](repeating: 0.0,count:numcells)
 
-    
-    
+for t in 0..<numSteps{
+    ez[i] = ez[i] + (hy[i] - hy[i - 1]) * (c * dt / dx)
     
 }
+for i in 1..<numcells {
+    ez[i] = ez[i] + (hy[i] - hy[i - 1]) * (c * dt / dx)
+}
+ez[sourceP] = sourceValue
 
-
-func ALLOC( _PNTR : Double,   _NUM : Double,  _TYPE : Double) {
+if t % 100 == 0{
+    print("Step: \(t), Max Ez: \(ez.max()!), Min Ez: \(ez.min()!)")
 }
